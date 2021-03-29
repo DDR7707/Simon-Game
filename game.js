@@ -17,16 +17,16 @@ $(document).keypress(function() {
 
 $(".btn").click(function() {
 
-  var userchosencolour = $(this).attr("id");
-  userpattern.push(userchosencolour);
+  var usercolour = $(this).attr("id");
+  userpattern.push(usercolour);
 
-  playSound(userchosencolour);
-  animatePress(userchosencolour);
+  playSound(usercolour);
+  animatePress(usercolour);
 
   checkAnswer(userpattern.length-1);
 });
 
-function checkanswer(currentLevel) {
+function checkAnswer(currentLevel) {
 
     if (gamepattern[currentLevel] === userpattern[currentLevel]) {
       if (userpattern.length === gamepattern.length){
@@ -52,18 +52,18 @@ function nextSequence() {
   userpattern = [];
   level++;
   $("#level-title").text("Level " + level);
-  var randomnumber = Math.floor(Math.random() * 4);
-  var randomcolour = buttoncolours[randomnumber];
+  var randomnum = Math.floor(Math.random() * 4);
+  var randomcolour = buttoncolours[randomnum];
   gamepattern.push(randomcolour);
 
   $("#" + randomcolour).fadeIn(100).fadeOut(100).fadeIn(100);
   playSound(randomcolour);
 }
 
-function animatePress(currentcolor) {
-  $("#" + currentcolor).addClass("pressed");
+function animatePress(currentcolour) {
+  $("#" + currentcolour).addClass("pressed");
   setTimeout(function () {
-    $("#" + currentcolor).removeClass("pressed");
+    $("#" + currentcolour).removeClass("pressed");
   }, 100);
 }
 
